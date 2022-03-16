@@ -1,0 +1,50 @@
+<ContentNavigationDrawer>
+    id: content
+    orientation: "vertical"
+    FloatLayout:
+        size_hint_y: None
+        height: "200dp"
+        BoxLayout:
+            id: box_image
+            x: root.x
+            pos_hint: {"top": 1}
+            FloatLayout:
+                # Background image
+                FitImage:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    source: "./assets/images/background-image.jpg"
+
+                # Python icon image
+                FitImage:
+                    pos_hint: {'center_x': .5, 'center_y': .4}
+                    source: "./assets/images/python-icon.webp"
+                    size_hint: None, None
+                    width: dp(100)
+                    height: dp(100)
+                    radius: [99, 99, 99, 99]
+
+        MDLabel:
+            text: "KivyMD"
+            size_hint_y: None
+            color: "#FFFFFF"
+            height: self.texture_size[1]
+            x: root.x + 10
+            y: root.height - box_image.height + dp(10)
+
+    ScrollView:
+        MDList:
+            OneLineIconListItem:
+                text: "Screen 1"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 1"
+                IconLeftWidget:
+                    icon: "language-python"
+    
+            OneLineIconListItem:
+                text: "Screen 2"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "scr 2"
+                IconLeftWidget:
+                    icon: "database-export-outline"
